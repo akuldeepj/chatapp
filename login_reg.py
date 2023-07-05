@@ -16,7 +16,7 @@ def display():
 def register():
     user = {}
     username = input('Enter a username :')
-    
+    phoneno = input('Enter phone number :')
     password = input('Enter password :')
     
 
