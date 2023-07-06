@@ -1,5 +1,14 @@
 import json
 
+def user_id(filename='info.json'):
+    with open(filename,'r') as f:
+        a = json.load(f)
+        last_id = a[-1]['id']
+        new_id = str(int(last_id) + 1).zfill(len(last_id))
+    # print(new_id)
+        last_id = new_id
+    return str(new_id)
+
 def create_chatid(user1, user2):
     if user1[2:] < user2[2:]:
         return user1[2:] + user2[2:]
@@ -28,3 +37,5 @@ if(verify_id('u1','u2')):
     print_chat("001002")
 else:
     create_chatid('u1','u2')
+
+print(user_id())

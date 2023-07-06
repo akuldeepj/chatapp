@@ -1,3 +1,4 @@
+from functions import user_id
 def display():
     print('Welcome to The app')
     print('---------------------------')
@@ -17,6 +18,7 @@ def register():
     user = {}
     username = input('Enter a username :')
     phoneno = input('Enter phone number :')
+    id = user_id
     password = input('Enter password :')
     
 
