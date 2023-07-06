@@ -24,7 +24,7 @@ def verify_id(user1,user2,filename='test.json'):
         else:
             return False
 
-# if(verify_id('u1','u2')):
-print_chat("001002")
-# else:
-# create_chatid('u1','u2')
+if(verify_id('u1','u2')):
+    print_chat("001002")
+else:
+    create_chatid('u1','u2')
