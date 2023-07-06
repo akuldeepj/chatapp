@@ -11,8 +11,8 @@ def print_chat(id,filename = 'test.json'):
         data = json.load(f)
     for i in data:
         if i['id'] == id:
-            for j in i['messages']:
-                print(j['sender'] + ' : ' + j['message'])
+            for j in i['msg']:
+                print(i['msg'][j]['id'] + ' : ' + i['msg'][j]['msg'])
 
 def verify_id(user1,user2,filename='test.json'):
     with open(filename, 'r') as f:
@@ -24,7 +24,7 @@ def verify_id(user1,user2,filename='test.json'):
         else:
             return False
 
-if(verify_id('u1','u2')):
-    print_chat(create_chatid('u1','u2'))
-else:
-    create_chatid('u1','u2')
+# if(verify_id('u1','u2')):
+print_chat("001002")
+# else:
+# create_chatid('u1','u2')
