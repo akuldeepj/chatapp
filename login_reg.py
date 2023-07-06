@@ -1,4 +1,5 @@
 from functions import user_id
+import json
 def display():
     print('Welcome to The app')
     print('---------------------------')
@@ -14,11 +15,13 @@ def display():
     
     return(int(num))
     
-def register():
+def register(filename='info.json'):
     user = {}
+    with open(filename,'r') as f:
+        data = json.load(f)
     username = input('Enter a username :')
     phoneno = input('Enter phone number :')
-    id = user_id
+    id = user_id()
     password = input('Enter password :')
     
 
@@ -26,31 +29,48 @@ def register():
         print('username already taken')
         
     else:
-        user[username] = password
+        user['Username'] = username
+        user['password'] = password
+        user['id'] = id
+        user['phoneNum'] = phoneno
+        data.append(user)
+        with open(filename,'w') as f:
+            json.dump(data,f)
+            f.write("\n")
+
+    
+        
         print('regestration sucessful')
         
 
     return user
 
-def login(user):
-    x = input('Enter Username :')
+def login(filename='info.json'):
+    with open(filename,'r') as f:
+        data = json.load(f)
+    x = input('Enter Phone Number :')
+    for a in data:
+        if a['phoneNum'] == x:
+            id = a['id']
     
 
-    if(x not in user):
-        print('enter a valid user ID')
+        if(x not in a['phoneNum']):
+            print('Enter a Phone Number')
         
 
-        login(user)
-        return 0
+            login()
+            return 0
     password = input('Enter password :')
-    if(password not in user[x]):
-        print('enter valid password')
+    for a in data:
+        if(password not in a['password']):
+            print('enter valid password')
+            login()
         
-        return -1
-    else:
-        print('login Successful')
+            return -1
+        else:
+            print('login Successful')
         
-        return 1
+            return 1
 
 def proceed():
     print('press 1 to continue for login.......')
@@ -58,13 +78,17 @@ def proceed():
     x = int(input())
     return x
 
-if __name__ == '__main__':
-    if(display() == 2):
-        a = register()
-        if(proceed() == 1):
-            x = login(a)
-            while True:
-                if(x == 0 or x == -1):
-                    x = login(a)
-                else:
-                    break
+# if __name__ == '__main__':
+#     if(display() == 2):
+#         a = register()
+#         if(proceed() == 1):
+#             x = login(a)
+#             while True:
+#                 if(x == 0 or x == -1):
+#                     x = login(a)
+#                 else:
+#                     break
+
+# login()
+register()
+
