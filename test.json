@@ -1,4 +1,1 @@
-[{
-    "id":"001002",
-    "msg":{"1":{"id":"001","msg":"Hello 002"},"2":{"id":"002","msg":"Hello 001"}}
-}]
+[{"id": "003004", "members": ["ID003", "ID004"], "messages": [{"id": "ID003", "msg": "Hello, User2!", "timestamp": "2023-07-07 05:51:09"}, {"id": "ID004", "msg": "Hi, User1!", "timestamp": "2023-07-07 05:51:09"}]}, {"id": "001002", "members": ["ID001", "ID002"], "messages": [{"id": "ID001", "msg": "Hello, User2!", "timestamp": "2023-07-07 05:51:33"}, {"id": "ID002", "msg": "Hi, User1!", "timestamp": "2023-07-07 05:51:33"}]}]
