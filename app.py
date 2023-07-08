@@ -244,7 +244,7 @@ def chat(chat_id):
                 return 'Message sent'
 
             chat_messages = fn.print_chat(chat_id)
-            return render_template('chat.html', user=user, chat_id=chat_id, messages=chat_messages)
+            return render_template('chat.html', user=user, chat_id=chat_id)
 
     flash('Please log in', 'error')
     return redirect(url_for('login'))
