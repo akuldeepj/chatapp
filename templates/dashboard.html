@@ -27,7 +27,7 @@
         <h2>Existing Chatrooms</h2>
         <ul>
             {% for chatroom in chatrooms %}
-                <li><a href="{{ url_for('chat', chat_id=chatroom.id) }}">{{ chatroom.id }}</a></li>
+                <li><a href="{{ url_for('chat', chat_id=chatroom.id) }}">{{chatroom.username}}</a></li>
             {% endfor %}
         </ul>
     {% else %}
