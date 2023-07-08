@@ -1,0 +1,87 @@
+html,body{
+    width:100dvw;
+    height: 100dvh;
+    background-color: #1F2933;
+}
+.navbar-brand{
+    position: relative;
+    left: 42vw;
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: #9FE2BF;
+}
+
+.mix{
+    /* bend it with background-color */
+    mix-blend-mode: multiply;
+}
+
+::-webkit-scrollbar{
+    width: 0.5em;
+    height: 0.5rem;
+}
+  
+::-webkit-scrollbar-track{
+    background: #1F2933;  
+}
+::-webkit-scrollbar-thumb{
+    background:#b9b3b3 ;
+    border-radius: 100vw;
+}
+  
+::-webkit-scrollbar-thumb:hover{
+    background:#fff ;
+}
+
+
+h2 span {
+    display: inline;
+}
+ h2 {
+    /* color: #e85def; */
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1rem;
+    position: absolute;
+    left: 32vw;
+    top: 40vh;
+
+}
+
+.info{
+    margin-right: 35rem;
+    margin-top: 2rem;
+}
+
+.buttons{
+    position: absolute;
+    left: 38vw;
+    top: 55vh;
+}
+
+.buttons button{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 8vw;
+    border: none;
+    width: 12rem;
+    background-color: #9473e8;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.buttons button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.buttons button:hover{
+    background-color: #704fc5;
+    transition: all 0.3s ease-in-out;
+}
