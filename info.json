@@ -58,5 +58,11 @@
         "Username": "abcd",
         "password": "1234",
         "phoneNum": "999"
+    },
+    {
+        "id": "011",
+        "Username": "adj",
+        "password": "0000",
+        "phoneNum": "9999"
     }
 ]
