@@ -1,7 +1,7 @@
 html,body{
     width:100dvw;
     height: 100dvh;
-    background-color: #1F2933;
+    background-color: #152733;
 }
 .navbar-brand{
     position: relative;
@@ -24,7 +24,7 @@ html,body{
 }
   
 ::-webkit-scrollbar-track{
-    background: #1F2933;  
+    background:  #152733;  
 }
 ::-webkit-scrollbar-thumb{
     background:#b9b3b3 ;
