@@ -1,99 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chat Application</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#createChatroomForm').submit(function(e) {
-        e.preventDefault();
-        var user1 = $('#user1').val();
-        var user2 = $('#user2').val();
-        $.post('/create_chatroom', {user1: user1, user2: user2}, function(data) {
-          var chatId = data.chat_id;
-          $('#chatId').text('Chat ID: ' + chatId);
-        });
-      });
-
-      $('#sendMessageForm').submit(function(e) {
-        e.preventDefault();
-        var user = $('#user').val();
-        var chatId = $('#chatIdInput').val();
-        var message = $('#message').val();
-        $.post('/send_message', {user: user, chat_id: chatId, message: message}, function(data) {
-          if (data.success) {
-            $('#message').val('');
-            alert('Message sent successfully!');
-          } else {
-            alert('Failed to send message. Please try again.');
-          }
-        });
-      });
-
-      $('#printChatForm').submit(function(e) {
-        e.preventDefault();
-        var chatId = $('#chatIdInput').val();
-        $.post('/print_chat', {chat_id: chatId}, function(data) {
-          var messages = data.messages;
-          var chatContent = '';
-          for (var i = 0; i < messages.length; i++) {
-            chatContent += messages[i].id + ': ' + messages[i].msg + '<br>';
-          }
-          $('#chatContent').html(chatContent);
-        });
-      });
-
-      $('#receiveMessagesForm').submit(function(e) {
-        e.preventDefault();
-        var chatId = $('#chatIdInput').val();
-        $.post('/receive_messages', {chat_id: chatId}, function(data) {
-          var messages = data.messages;
-          var chatContent = '';
-          for (var i = 0; i < messages.length; i++) {
-            chatContent += messages[i].id + ': ' + messages[i].msg + ' - ' + messages[i].timestamp + '<br>';
-          }
-          $('#chatContent').html(chatContent);
-        });
-      });
-    });
-  </script>
+    <title>Login and Register</title>
 </head>
 <body>
-  <h1>Create Chatroom</h1>
-  <form id="createChatroomForm">
-    <label for="user1">User 1:</label>
-    <input type="text" id="user1">
-    <label for="user2">User 2:</label>
-    <input type="text" id="user2">
-    <button type="submit">Create Chatroom</button>
-  </form>
-  <div id="chatId"></div>
-
-  <h1>Send Message</h1>
-  <form id="sendMessageForm">
-    <label for="user">User:</label>
-    <input type="text" id="user">
-    <label for="chatIdInput">Chat ID:</label>
-    <input type="text" id="chatIdInput">
-    <label for="message">Message:</label>
-    <input type="text" id="message">
-    <button type="submit">Send Message</button>
-  </form>
-
-  <h1>Print Chat</h1>
-  <form id="printChatForm">
-    <label for="chatIdInput">Chat ID:</label>
-    <input type="text" id="chatIdInput">
-    <button type="submit">Print Chat</button>
-  </form>
-  <div id="chatContent"></div>
-
-  <h1>Receive Messages</h1>
-  <form id="receiveMessagesForm">
-    <label for="chatIdInput">Chat ID:</label>
-    <input type="text" id="chatIdInput">
-    <button type="submit">Receive Messages</button>
-  </form>
-  <div id="chatContent"></div>
+    <h1>Welcome to the Login and Register App</h1>
+    <p><a href="{{ url_for('login') }}">Login</a></p>
+    <p><a href="{{ url_for('register') }}">Register</a></p>
 </body>
 </html>

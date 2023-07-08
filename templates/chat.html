@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Chat</h1>
+    <h2>Chat ID: {{ chat_id }}</h2>
+    <p>Welcome, {{ user.Username }}!</p>
+
+    <div id="chat-messages">
+        {% for message in messages %}
+            <p>{{ message.id }}: {{ message.msg }}</p>
+        {% endfor %}
+    </div>
+
+    <form id="chat-form" action="{{ url_for('chat', chat_id=chat_id) }}" method="post">
+        <input type="text" name="message" id="message-input" placeholder="Type your message" required>
+        <input type="submit" value="Send">
+    </form>
+
+    <script>
+        // Automatically scroll to the bottom of the chat messages
+        var chatMessages = document.getElementById('chat-messages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Function to update the chat messages with new messages
+        function updateChatMessages(messages) {
+            var chatDiv = document.getElementById('chat-messages');
+
+            messages.forEach(function(message) {
+                var messageDiv = document.createElement('p');
+                messageDiv.textContent = message.id + ': ' + message.msg;
+                chatDiv.appendChild(messageDiv);
+            });
+
+            // Scroll to the bottom of the chat messages
+            chatDiv.scrollTop = chatDiv.scrollHeight;
+        }
+
+        // Function to send a new message
+        function sendMessage(event) {
+            event.preventDefault();
+            var messageInput = document.getElementById('message-input');
+            var message = messageInput.value;
+
+            // Make an AJAX request to send the message to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', "{{ url_for('chat', chat_id=chat_id) }}");
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Clear the input field after successful message sending
+                    messageInput.value = '';
+                }
+            };
+            xhr.send('message=' + encodeURIComponent(message));
+        }
+
+        // Attach the submit event listener to the chat form
+        var chatForm = document.getElementById('chat-form');
+        chatForm.addEventListener('submit', sendMessage);
+
+        // Function to continuously check for new messages
+        var lastMessageTimestamp = '';  // Initialize variable to store the timestamp of the last received message
+
+function checkNewMessages() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "{{ url_for('get_messages', chat_id=chat_id) }}");
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var newMessages = JSON.parse(xhr.responseText);
+
+            // Filter out the messages with a timestamp greater than the last received message's timestamp
+            var filteredMessages = newMessages.filter(function(message) {
+                return message.timestamp > lastMessageTimestamp;
+            });
+
+            if (filteredMessages.length > 0) {
+                updateChatMessages(filteredMessages);
+
+                // Update the last received message's timestamp
+                lastMessageTimestamp = filteredMessages[filteredMessages.length - 1].timestamp;
+            }
+        }
+    };
+    xhr.send();
+}
+
+
+        // Check for new messages every 2 seconds (adjust as needed)
+        setInterval(checkNewMessages, 1000);
+    </script>
+</body>
+</html>

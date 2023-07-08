@@ -15,59 +15,41 @@ def display():
     
     return(int(num))
     
-def register(filename='info.json'):
-    user = {}
-    with open(filename,'r') as f:
+def register_user(username, password, phone_num):
+    with open('info.json', 'r') as f:
         data = json.load(f)
-    username = input('Enter a username :')
-    phoneno = input('Enter phone number :')
-    id = user_id()
-    password = input('Enter password :')
-    
 
-    if username in user:
-        print('username already taken')
-        
-    else:
-        user['Username'] = username
-        user['password'] = password
-        user['id'] = id
-        user['phoneNum'] = phoneno
-        data.append(user)
-        with open(filename,'w') as f:
-            json.dump(data,f)
-            f.write("\n")
-        
-        print('regestration sucessful')
-        
+    for user in data:
+        if user['phoneNum'] == phone_num:
+            return False
 
-    return user
-
-def login(filename='info.json'):
-    with open(filename,'r') as f:
+    with open('info.json', 'r') as f:
         data = json.load(f)
-    x = input('Enter Phone Number :')
-    for a in data:
-        if a['phoneNum'] == x:
-            id = a['id']
-    
-        if(x not in a['phoneNum']):
-            print('Enter a Phone Number')
-        
+        last_id = data[-1]['id'] if data else '0'
+        new_id = str(int(last_id) + 1).zfill(len(last_id))
 
-            login()
-            return 0
-    password = input('Enter password :')
-    for a in data:
-        if(password not in a['password']):
-            print('enter valid password')
-            login()
-        
-            return -1
-        else:
-            print('login Successful')
-        
-            return 1
+    new_user = {
+        'id': new_id,
+        'Username': username,
+        'password': password,
+        'phoneNum': phone_num
+    }
+    data.append(new_user)
+
+    with open('info.json', 'w') as f:
+        json.dump(data, f, indent=4)
+
+    return True
+
+def verify_credentials(phone_num, password):
+    with open('info.json', 'r') as f:
+        data = json.load(f)
+
+    for user in data:
+        if user['phoneNum'] == phone_num and user['password'] == password:
+            return user['id']
+
+    return None
 
 def proceed():
     print('press 1 to continue for login.......')
@@ -86,6 +68,6 @@ def proceed():
 #                 else:
 #                     break
 
-# login()
-register()
+# register()
+
 

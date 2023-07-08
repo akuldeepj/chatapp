@@ -1,1 +1,38 @@
-[{"id": "001", "Username": "xyz", "password": "gdgd", "phoneNum": "123"}, {"Username": "d", "password": "sajhas", "id": "002", "phoneNum": "122334"}, {"Username": "qgdj", "password": "jhagjgej", "id": "003", "phoneNum": "63153135"}]
+[
+    {
+        "id": "001",
+        "Username": "xyz",
+        "password": "gdgd",
+        "phoneNum": "123"
+    },
+    {
+        "Username": "d",
+        "password": "sajhas",
+        "id": "002",
+        "phoneNum": "122334"
+    },
+    {
+        "Username": "qgdj",
+        "password": "jhagjgej",
+        "id": "003",
+        "phoneNum": "63153135"
+    },
+    {
+        "Username": "akuldeep",
+        "password": "akul",
+        "id": "004",
+        "phoneNum": "9030930161"
+    },
+    {
+        "id": "005",
+        "Username": "akuldeepj",
+        "password": "qwerty",
+        "phoneNum": "123"
+    },
+    {
+        "id": "006",
+        "Username": "akuldeepj",
+        "password": "qwerty",
+        "phoneNum": "1234567890"
+    }
+]

@@ -5,15 +5,15 @@ def user_id(filename='info.json'):
         a = json.load(f)
         last_id = a[-1]['id']
         new_id = str(int(last_id) + 1).zfill(len(last_id))
-    # print(new_id)
         last_id = new_id
     return str(new_id)
 
 def create_chatid(user1, user2):
     if user1[2:] < user2[2:]:
-        return user1[2:] + user2[2:]
+        return user1[2:].zfill(3) + user2[2:].zfill(3)
     else:
-        return user2[2:] + user1[2:]
+        return user2[2:].zfill(3) + user1[2:].zfill(3)
+
     
 def verify_id(user1, user2, filename='test.json'):
     with open(filename, 'r') as f:
@@ -23,12 +23,6 @@ def verify_id(user1, user2, filename='test.json'):
             return True
     return False
 
-# if(verify_id('u1','u2')):
-#     print_chat("001002")
-# else:
-#     create_chatid('u1','u2')
-
-# print(user_id())
 
 def create_chatroom(user1, user2, filename='test.json'):
     chat_id = create_chatid(user1['id'], user2['id'])
@@ -42,6 +36,11 @@ def create_chatroom(user1, user2, filename='test.json'):
     return chat_id
 
 def join_chatroom(user, chat_id, filename='test.json'):
+    allowed_users = [chat_id[:3], chat_id[3:]]  # List of allowed user IDs for joining
+
+    if chat_id and user['id'] not in allowed_users:
+        return False
+
     with open(filename, 'r') as f:
         data = json.load(f)
     for chatroom in data:
@@ -51,6 +50,7 @@ def join_chatroom(user, chat_id, filename='test.json'):
                 json.dump(data, f)
             return True
     return False
+
 
 def print_chat(chat_id, filename='test.json'):
     with open(filename, 'r') as f:
@@ -85,22 +85,22 @@ def receive_messages(chat_id, filename='test.json'):
         if chatroom['id'] == chat_id:
             return chatroom['messages']
 
-user1 = {'id': 'ID001'}
-user2 = {'id': 'ID002'}
-user3 = {'id': 'ID003'}
-user4 = {'id': 'ID004'}
+# user1 = {'id': 'ID001'}
+# user2 = {'id': 'ID002'}
+# user3 = {'id': 'ID003'}
+# user4 = {'id': 'ID004'}
 
-chat_id = create_chatid(user1['id'], user2['id'])
-create_chatroom(user1, user2)
+# chat_id = create_chatid(user1['id'], user2['id'])
+# create_chatroom(user1, user2)
 
-send_message(user1, chat_id, 'Hello, User2!')
+# send_message(user1, chat_id, 'Hello, User2!')
 
-send_message(user2, chat_id, 'Hi, User1!')
-create_chatroom(user3, user4)
-send_message(user3,create_chatid(user3['id'], user4['id']), 'Hi, User4!')
+# send_message(user2, chat_id, 'Hi, User1!')
+# create_chatroom(user3, user4)
+# send_message(user3,create_chatid(user3['id'], user4['id']), 'Hi, User4!')
 
-send_message(user4,create_chatid(user3['id'], user4['id']), 'Hello, User3!')
+# send_message(user4,create_chatid(user3['id'], user4['id']), 'Hello, User3!')
 
 
-receive_messages(chat_id)
-receive_messages(create_chatid(user3['id'], user4['id']))
+# receive_messages(chat_id)
+# receive_messages(create_chatid(user3['id'], user4['id']))
