@@ -15,15 +15,13 @@ def create_chatid(user1, user2):
     else:
         return user2[2:] + user1[2:]
     
-def verify_id(user1,user2,filename='test.json'):
+def verify_id(user1, user2, filename='test.json'):
     with open(filename, 'r') as f:
         data = json.load(f)
-    
     for i in data:
-        if i['id'] == create_chatid(user1,user2):
+        if i['id'] == create_chatid(user1, user2):
             return True
-        else:
-            return False
+    return False
 
 # if(verify_id('u1','u2')):
 #     print_chat("001002")
@@ -40,7 +38,8 @@ def create_chatroom(user1, user2, filename='test.json'):
     data.append(chatroom)
     with open(filename, 'w') as f:
         json.dump(data, f)
-    print(f'Chatroom {chat_id} created successfully.')
+    
+    return chat_id
 
 def join_chatroom(user, chat_id, filename='test.json'):
     with open(filename, 'r') as f:
@@ -50,17 +49,15 @@ def join_chatroom(user, chat_id, filename='test.json'):
             chatroom['members'].append(user['id'])
             with open(filename, 'w') as f:
                 json.dump(data, f)
-            print(f'User {user["id"]} joined chatroom {chat_id}.')
-            return
-    print(f'Chatroom {chat_id} not found.')
+            return True
+    return False
 
 def print_chat(chat_id, filename='test.json'):
     with open(filename, 'r') as f:
         data = json.load(f)
     for chatroom in data:
         if chatroom['id'] == chat_id:
-            for message in chatroom['messages']:
-                print(f'{message["id"]} : {message["msg"]}')
+            return chatroom['messages']
 
 
 from datetime import datetime
@@ -77,9 +74,8 @@ def send_message(user, chat_id, message, filename='test.json'):
             chatroom['messages'].append(new_message)
             with open(filename, 'w') as f:
                 json.dump(data, f)
-            print(f'Message sent by {user["id"]} in chatroom {chat_id}.')
-            return
-    print(f'Chatroom {chat_id} not found.')
+            return True
+    return False
 
 
 def receive_messages(chat_id, filename='test.json'):
@@ -87,9 +83,7 @@ def receive_messages(chat_id, filename='test.json'):
         data = json.load(f)
     for chatroom in data:
         if chatroom['id'] == chat_id:
-            for message in chatroom['messages']:
-                print(f'{message["id"]} : {message["msg"]} - {message["timestamp"]}')
-
+            return chatroom['messages']
 
 user1 = {'id': 'ID001'}
 user2 = {'id': 'ID002'}
