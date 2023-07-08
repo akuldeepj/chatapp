@@ -9,10 +9,10 @@ def user_id(filename='info.json'):
     return str(new_id)
 
 def create_chatid(user1, user2):
-    if user1[2:] < user2[2:]:
-        return user1[2:].zfill(3) + user2[2:].zfill(3)
+    if user1 < user2:
+        return user1.zfill(3) + user2.zfill(3)
     else:
-        return user2[2:].zfill(3) + user1[2:].zfill(3)
+        return user2.zfill(3) + user1.zfill(3)
 
     
 def verify_id(user1, user2, filename='test.json'):
