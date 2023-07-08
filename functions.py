@@ -93,13 +93,20 @@ def receive_messages(chat_id, filename='test.json'):
 
 user1 = {'id': 'ID001'}
 user2 = {'id': 'ID002'}
+user3 = {'id': 'ID003'}
+user4 = {'id': 'ID004'}
+
 chat_id = create_chatid(user1['id'], user2['id'])
 create_chatroom(user1, user2)
 
 send_message(user1, chat_id, 'Hello, User2!')
 
 send_message(user2, chat_id, 'Hi, User1!')
+create_chatroom(user3, user4)
+send_message(user3,create_chatid(user3['id'], user4['id']), 'Hi, User4!')
 
-print_chat(chat_id)
+send_message(user4,create_chatid(user3['id'], user4['id']), 'Hello, User3!')
+
 
 receive_messages(chat_id)
+receive_messages(create_chatid(user3['id'], user4['id']))

@@ -37,8 +37,6 @@ def register(filename='info.json'):
         with open(filename,'w') as f:
             json.dump(data,f)
             f.write("\n")
-
-    
         
         print('regestration sucessful')
         
@@ -53,7 +51,6 @@ def login(filename='info.json'):
         if a['phoneNum'] == x:
             id = a['id']
     
-
         if(x not in a['phoneNum']):
             print('Enter a Phone Number')
         
