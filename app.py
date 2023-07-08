@@ -83,7 +83,6 @@ def dashboard():
     return redirect(url_for('login'))
 
 
-
 @app.route('/chat/<chat_id>', methods=['GET', 'POST'])
 def chat(chat_id):
     user_id = session.get('user_id')
@@ -95,14 +94,13 @@ def chat(chat_id):
             if request.method == 'POST':
                 message = request.form['message']
                 fn.send_message(user, chat_id, message)
-                return 'Message sent'  # Return a response to indicate successful message sending
+                return 'Message sent' 
 
             chat_messages = fn.print_chat(chat_id)
             return render_template('chat.html', user=user, chat_id=chat_id, messages=chat_messages)
 
     flash('Please log in', 'error')
     return redirect(url_for('login'))
-
 
 
 @app.route('/chat/<chat_id>/messages', methods=['GET'])

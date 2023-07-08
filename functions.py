@@ -36,7 +36,7 @@ def create_chatroom(user1, user2, filename='test.json'):
     return chat_id
 
 def join_chatroom(user, chat_id, filename='test.json'):
-    allowed_users = [chat_id[:3], chat_id[3:]]  # List of allowed user IDs for joining
+    allowed_users = [chat_id[:3], chat_id[3:]] 
 
     if chat_id and user['id'] not in allowed_users:
         return False
