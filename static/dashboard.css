@@ -17,6 +17,25 @@ body{
     flex: 1;
     background-color: #f5f5f5;
     padding: 20px;
+    position: absolute;
+    left: 10vw;
+    top: 20vh;
+    width: 35vw;
+    border-radius: 1rem;
+    
+}
+
+.mid-section {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    position: absolute;
+    left: 10vw;
+    top: 50vh;
+    width: 35vw;
+    height: 45vh;
+    border-radius: 1rem;
+    
 }
 
 .right-section {
@@ -24,6 +43,9 @@ body{
     background-color: #fff;
     padding: 20px;
     text-align: center;
+    position: absolute;
+    left: 80vw;
+    top: 50vh;
 }
 
 .right-section img {
@@ -38,14 +60,11 @@ body{
     height: 100vh;
 }
 
-.left-section {
-    background-color: #f5f5f5;
-    padding: 20px;
-}
 
 .left-section h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #fff; 
 }
 
 .left-section .messages {
@@ -61,6 +80,7 @@ body{
 .left-section label {
     display: block;
     margin-bottom: 5px;
+    color: #fff;
 }
 
 .left-section input[type="text"] {
@@ -107,6 +127,74 @@ body{
 }
 
 .left-section p {
+    color: #888;
+}
+
+
+.mid-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.mid-section .messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.mid-section .messages li {
+    margin-bottom: 5px;
+}
+
+.mid-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.mid-section input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.mid-section input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.mid-section input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.mid-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.mid-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mid-section ul li {
+    margin-bottom: 5px;
+}
+
+.mid-section ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.mid-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.mid-section p {
     color: #888;
 }
 

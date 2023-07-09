@@ -6,8 +6,30 @@
     <link rel="stylesheet" href="../static/dashboard.css">
     <title>Dashboard</title>
 </head>
+<style>
+    .col{
+    background-color:  #193649 !important;
+}
+.navbar-brand{
+    position: relative;
+    left: 42vw;
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: #9FE2BF;
+}
+
+.glass{
+  background: linear-gradient(135deg,rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.242))!important;
+  backdrop-filter: blur(300px)!important;
+  -webkit-backdrop-filter: blur(40px)!important;
+  border: 1px solid rgba(255,255,255,0.18)!important;
+  align-items: center!important;
+}
+  </style>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,11 +44,19 @@
             </a>
           </ul>
         </div>
+      </nav> -->
+
+      <nav class="navbar bg-body-tertiary col">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+            Conversa
+          </a>
+          <button class="btn btn-outline-danger" style="color:white" onclick="login()">LogOut</button>
+        </div>
       </nav>
-
-
     <div class="container">
-        <div class="left-section">
+        <div class="left-section glass">
             <h2>Create a Chatroom</h2>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -43,7 +73,7 @@
                 <input type="submit" value="Start Chat">
             </form>
         </div>
-        <div class="left-section">
+        <div class="mid-section glass">
             <!-- Content for the left section 2 -->
             {% if chatrooms %}
                 <h2>Existing Chatrooms</h2>
@@ -61,4 +91,9 @@
         </div>
     </div>
 </body>
+<script>
+    function login() {
+      window.location.href = "{{ url_for('login') }}";
+    }
+  </script>
 </html>
