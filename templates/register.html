@@ -10,7 +10,31 @@
     <link rel="stylesheet" href="../static/register.css">
 </head>
 
+<style>
+    .col{
+    background-color:  #193649 !important;
+}
+.navbar-brand{
+    position: relative;
+    left: 42vw;
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: #9FE2BF;
+}
+  </style>
+
 <body>
+
+    <nav class="navbar bg-body-tertiary col">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+            Conversa
+          </a>
+        </div>
+      </nav>
 
     <div class="form-body">
         <div class="row">
