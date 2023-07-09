@@ -21,7 +21,9 @@ def register():
         if not fn.validate_phone_number(phone_num):
             flash('Invalid phone number. Please enter a valid phone number.', 'error')
         elif not fn.validate_password(password):
-            flash('Password must contain at least 8 characters, including uppercase and lowercase letters, numbers, and special characters.', 'error')
+            flash('Password must contain at least 8 characters')#, including uppercase and lowercase letters, numbers, and special characters.', 'error')
+            flash(' atleast one uppercase and lowercase letter', 'error')
+            flash('atleast one number and special character.', 'error')
         elif lr.register_user(username, password, phone_num):
             flash('Registration successful!', 'success')
             return redirect(url_for('login'))
