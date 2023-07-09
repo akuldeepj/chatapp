@@ -1,0 +1,112 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100vh;
+    background-color: #152733;
+}
+
+.left-section {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.right-section {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.right-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.left-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.left-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.left-section .messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.left-section .messages li {
+    margin-bottom: 5px;
+}
+
+.left-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.left-section input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.left-section input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.left-section input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.left-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.left-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.left-section ul li {
+    margin-bottom: 5px;
+}
+
+.left-section ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.left-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.left-section p {
+    color: #888;
+}
+

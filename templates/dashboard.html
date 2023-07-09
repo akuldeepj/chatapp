@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/dashboard.css">
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    <p>Welcome, {{ user.Username }}!</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">LogOut</a>
+            </li>
+            <a class="navbar-brand" href="../static/logo.png">
+                <img src="logo.png" alt="Logo">
+            </a>
+          </ul>
+        </div>
+      </nav>
 
-    <h2>Create a Chatroom</h2>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    <form action="{{ url_for('dashboard') }}" method="post">
-        <label for="phone_num">Enter Phone Number:</label>
-        <input type="text" id="phone_num" name="phone_num" required>
-        <input type="submit" value="Start Chat">
-    </form>
 
-    {% if chatrooms %}
-        <h2>Existing Chatrooms</h2>
-        <ul>
-            {% for chatroom in chatrooms %}
-                <li><a href="{{ url_for('chat', chat_id=chatroom.id) }}">{{chatroom.username}}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No existing chatrooms available.</p>
-    {% endif %}
+    <div class="container">
+        <div class="left-section">
+            <h2>Create a Chatroom</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('dashboard') }}" method="post">
+                <label for="phone_num">Enter Phone Number:</label>
+                <input type="text" id="phone_num" name="phone_num" required>
+                <input type="submit" value="Start Chat">
+            </form>
+        </div>
+        <div class="left-section">
+            <!-- Content for the left section 2 -->
+            {% if chatrooms %}
+                <h2>Existing Chatrooms</h2>
+                <ul>
+                    {% for chatroom in chatrooms %}
+                        <li><a href="{{ url_for('chat', chat_id=chatroom.id) }}">{{chatroom.username}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No existing chatrooms available.</p>
+            {% endif %}
+        </div>
+        <div class="right-section">
+            <img src="" alt="Image">
+        </div>
+    </div>
 </body>
 </html>
