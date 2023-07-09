@@ -23,8 +23,6 @@ def validate_phone_number(phone_number):
         return True
     else:
         return False
-    
-import re
 
 def validate_password(password):
     if len(password) < 8:
