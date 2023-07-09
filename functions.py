@@ -18,7 +18,7 @@ def create_chatid(user1, user2):
 
 
 def validate_phone_number(phone_number):
-    pattern = r'^\+?91?[6-9]\d{9}$'
+    pattern = r'[6-9]\d{9}$'
     if re.match(pattern, phone_number):
         return True
     else:
