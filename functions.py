@@ -1,4 +1,5 @@
 import json
+import re
 
 def user_id(filename='info.json'):
     with open(filename,'r') as f:
@@ -13,6 +14,37 @@ def create_chatid(user1, user2):
         return user1.zfill(3) + user2.zfill(3)
     else:
         return user2.zfill(3) + user1.zfill(3)
+    
+
+
+def validate_phone_number(phone_number):
+    pattern = r'^\+?91?[6-9]\d{9}$'
+    if re.match(pattern, phone_number):
+        return True
+    else:
+        return False
+    
+import re
+
+def validate_password(password):
+    if len(password) < 8:
+        return False
+    
+    if not re.search(r"[A-Z]", password):
+        return False
+    
+    if not re.search(r"[a-z]", password):
+        return False
+    
+    if not re.search(r"\d", password):
+        return False
+    
+    if not re.search(r"\W", password):
+        return False
+    
+    return True
+
+
 
     
 def verify_id(user1, user2, filename='test.json'):
