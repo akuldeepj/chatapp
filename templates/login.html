@@ -5,25 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/login.css">
 </head>
+<style>
+    .col{
+    background-color:  #193649 !important;
+}
+.navbar-brand{
+    position: relative;
+    left: 42vw;
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: #9FE2BF;
+}
+  </style>
 <body>
-    <h1>Login</h1>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    <form action="{{ url_for('login') }}" method="post">
-        <label for="phone_num">Phone Number:</label>
-        <input type="text" id="phone_num" name="phone_num" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        <input type="submit" value="Login">
-    </form>
-    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+
+    <nav class="navbar bg-body-tertiary col">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+            Conversa
+          </a>
+        </div>
+      </nav>
+
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Login</h3>
+                        <p>Enter the following details to continue</p>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endwith %}
+                        <form class="requires-validation" novalidate action="{{url_for('login') }}" method="post">
+
+                            <div class="col-md-12">
+                                <input type="text" class="input" placeholder="Phone Number" id="phone_num"
+                                    name="phone_num" required>
+                                <div class="valid-feedback">Phone number field is valid!</div>
+                                <div class="invalid-feedback">Phone number field cannot be blank!</div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <input class="form-control" id="password" type="password" name="password"
+                                    placeholder="Password" required>
+                                <div class="valid-feedback">Password field is valid!</div>
+                                <div class="invalid-feedback">Password field cannot be blank!</div>
+                            </div>
+
+                            <button type="submit" class="reg">Login</button>
+                        </form>
+                        <div class="form-sent">
+                            <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
