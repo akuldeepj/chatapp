@@ -80,7 +80,8 @@ def dashboard():
                         if phone_num not in a['phoneNum']:
                             flash("Phone Number not registered",'error')
                             break
-
+                
+                print(other_user)
             with open('test.json', 'r') as f:
                 chatrooms_data = json.load(f)
 
@@ -111,6 +112,7 @@ def dashboard():
 @app.route('/chat/<chat_id>', methods=['GET', 'POST'])
 def chat(chat_id):
     user_id = session.get('user_id')
+    
     if user_id:
         with open('info.json', 'r') as f:
             data = json.load(f)

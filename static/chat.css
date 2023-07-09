@@ -1,9 +1,12 @@
 #chat-messages {
-    max-height: 300px;
+    max-height: 470px;
     overflow-y: scroll;
     border: 1px solid #ccc;
     padding: 10px;
-    
+    background: #152733;
+    max-width: 90vw;
+    /* position: absolute; */
+    margin-left: 5vw;
 }
 
 html,body{
@@ -81,6 +84,9 @@ h1 {
 
 #chat-form {
     margin-top: 20px;
+    display: flex;
+    position: absolute;
+    top: 90vh;
 }
 
 /* #message-input {
@@ -101,4 +107,28 @@ h1 {
     color: #fff;
     text-align: center;
     margin-top: 1rem;
+}
+
+.button{
+    position: absolute;
+    left: 86vw;
+
+}
+
+
+::-webkit-scrollbar{
+    width: 0.5em;
+    height: 0.5rem;
+}
+  
+::-webkit-scrollbar-track{
+    background:  #152733;  
+}
+::-webkit-scrollbar-thumb{
+    background:#b9b3b3 ;
+    border-radius: 100vw;
+}
+  
+::-webkit-scrollbar-thumb:hover{
+    background:#fff ;
 }
