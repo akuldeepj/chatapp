@@ -31,9 +31,9 @@ body{
     padding: 20px;
     position: absolute;
     left: 10vw;
-    top: 50vh;
+    top: 55vh;
     width: 35vw;
-    height: 45vh;
+    height: 35vh;
     border-radius: 1rem;
     
 }
@@ -92,15 +92,17 @@ body{
 }
 
 .left-section input[type="submit"] {
-    background-color: #4caf50;
+    background-color: rgba(50, 46, 230, 0.927);
     color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 1rem;
 }
 
 .left-section input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color:  rgba(27, 24, 212, 0.927);
+    animation: ease-in-out 0.3s;
 }
 
 .left-section h2 {
@@ -186,8 +188,10 @@ body{
 }
 
 .mid-section ul li a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
+    font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
 .mid-section ul li a:hover {
@@ -197,4 +201,39 @@ body{
 .mid-section p {
     color: #888;
 }
+
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-section, .right-section {
+    flex-basis: 30%;
+    padding: 20px;
+}
+
+.mid-section {
+    flex-basis: 40%;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+::-webkit-scrollbar{
+    width: 0.3em;
+    height: 0.5rem;
+}
+  
+::-webkit-scrollbar-track{
+    background:  #152733;  
+}
+::-webkit-scrollbar-thumb{
+    background:#b9b3b3 ;
+    border-radius: 100vw;
+}
+  
+::-webkit-scrollbar-thumb:hover{
+    background:#fff ;
+}
+
 

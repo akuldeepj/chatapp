@@ -57,7 +57,10 @@
       </nav>
     <div class="container">
         <div class="left-section glass">
-            <h2>Create a Chatroom</h2>
+            <h2>
+                <span style="color: #fff;">Create a</span>
+                <span style="color: #57abe3;">New Chat</span>
+            </h2>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul class="messages">
@@ -73,13 +76,13 @@
                 <input type="submit" value="Start Chat">
             </form>
         </div>
-        <div class="mid-section glass">
+        <div class="mid-section bg-body-tertiary glass">
             <!-- Content for the left section 2 -->
             {% if chatrooms %}
-                <h2>Existing Chatrooms</h2>
+                <h2 style="color: #57abe3;">Previous Chats</h2>
                 <ul>
                     {% for chatroom in chatrooms %}
-                        <li><a href="{{ url_for('chat', chat_id=chatroom.id) }}">{{chatroom.username}}</a></li>
+                        <li><a href="{{ url_for('chat', chat_id=chatroom.id) }}" >{{chatroom.username}}</a></li>
                     {% endfor %}
                 </ul>
             {% else %}
