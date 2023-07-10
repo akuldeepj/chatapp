@@ -1,5 +1,5 @@
 #chat-messages {
-    max-height: 470px;
+    max-height: 490px;
     overflow-y: scroll;
     border: 1px solid #ccc;
     padding: 10px;
@@ -81,6 +81,12 @@ h1 {
     background-color: #2D3E4E !important;
 }
 
+.back{
+    position: absolute;
+    left: 5vw;
+    top: 12vh;
+    cursor: pointer;   
+}
 
 #chat-form {
     margin-top: 20px;

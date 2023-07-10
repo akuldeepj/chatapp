@@ -41,8 +41,6 @@ def login():
         user_id = lr.verify_credentials(phone_num, password)
 
         if user_id:
-            flash('Login successful!', 'success')
-
             # Store user ID in the session
             session['user_id'] = user_id
 
