@@ -1,0 +1,55 @@
+html,body{
+    width:100dvw;
+    height: 100dvh;
+    background-color: #152733;
+}
+.navbar-brand{
+    position: relative;
+    left: 42vw;
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: #9FE2BF;
+}
+
+.contributor {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+    position: relative;
+    top: 30vh;
+}
+
+.contributor img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  
+}
+
+.contributor a {
+    text-decoration: none;
+    color: #9FE2BF;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.contributor p {
+    margin: 0;
+}
+
+.contributor-container {
+    text-align: center;
+    /* position: relative;
+    bottom: 10vh; */
+}
+
+.authors{
+    position: absolute;
+    top: 20vh;
+    left: 45vw;
+    color: #fff;
+    /* font-size: 2rem; */
+}

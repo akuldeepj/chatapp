@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/contributor.css">
+    <title>Contributors</title>
+</head>
+<style>
+
+    .col{
+    background-color:  #193649 !important;
+}
+</style>
+<body>
+    <nav class="navbar bg-body-tertiary col">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
+            Conversa
+          </a>
+        </div>
+    </nav>
+    <h1 class="authors">Authors</h1>
+    <div class="contributor-container">
+        <div id="contributors"></div>
+    </div>
+
+    <script>
+        const contributors = ["akuldeepj", "DarshinK", "Kenshi-0"];
+
+        Promise.all(
+            contributors.map(username =>
+                fetch(`https://api.github.com/users/${username}`)
+                    .then(response => response.json())
+            )
+        )
+        .then(data => {
+            const contributorsContainer = document.getElementById("contributors");
+
+            data.forEach(contributor => {
+                const { login, avatar_url, html_url } = contributor;
+
+                const contributorDiv = document.createElement("div");
+                contributorDiv.className = "contributor";
+
+                const avatarLink = document.createElement("a");
+                avatarLink.href = html_url;
+                avatarLink.target = "_blank";
+
+                const avatarImg = document.createElement("img");
+                avatarImg.src = avatar_url;
+                avatarImg.alt = `${login}'s avatar`;
+
+                avatarLink.appendChild(avatarImg);
+
+                const usernameLink = document.createElement("a");
+                usernameLink.href = html_url;
+                usernameLink.target = "_blank";
+                usernameLink.textContent = login;
+
+                const usernameParagraph = document.createElement("p");
+                usernameParagraph.appendChild(usernameLink);
+
+                contributorDiv.appendChild(avatarLink);
+                contributorDiv.appendChild(usernameParagraph);
+
+                contributorsContainer.appendChild(contributorDiv);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching contributor data:", error);
+        });
+    </script>
+</body>
+</html>

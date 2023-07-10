@@ -52,6 +52,10 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/authors')
+def authors():
+    return render_template('contributors.html')
+
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     user_id = session.get('user_id')
