@@ -8,10 +8,17 @@ app.secret_key = 'secret-key'
 
 @app.route('/')
 def index():
+    user_agent = request.user_agent.string
+    print(user_agent)
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    user_agent = request.user_agent.string
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -34,6 +41,9 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    user_agent = request.user_agent.string
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     if request.method == 'POST':
         phone_num = request.form['phone_num']
         password = request.form['password']
@@ -52,10 +62,16 @@ def login():
 
 @app.route('/authors')
 def authors():
+    user_agent = request.user_agent.string
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     return render_template('contributors.html')
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
+    user_agent = request.user_agent.string
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     user_id = session.get('user_id')
     if user_id:
         with open('info.json', 'r') as f:
@@ -113,6 +129,9 @@ def dashboard():
 
 @app.route('/chat/<chat_id>', methods=['GET', 'POST'])
 def chat(chat_id):
+    user_agent = request.user_agent.string
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     user_id = session.get('user_id')
     
     if user_id:
@@ -134,8 +153,17 @@ def chat(chat_id):
 
 @app.route('/chat/<chat_id>/messages', methods=['GET'])
 def get_messages(chat_id):
+    user_agent = request.user_agent.string
+    if 'Mobile' in user_agent or 'tablet' in user_agent:
+        return redirect(url_for('not_supported'))
     chat_messages = fn.print_chat(chat_id)
     return jsonify(chat_messages)
+
+@app.route('/not-supported')
+def not_supported():
+    return render_template('not_supported.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
