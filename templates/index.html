@@ -14,8 +14,10 @@
 
   </style>
 <body>
+
     <nav class="navbar bg-body-tertiary col">
         <div class="container-fluid">
+          <button type="button" class="btn btn-outline-success" onclick="authors()">Authors</button>
           <a class="navbar-brand" href="#">
             <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
             Conversa
@@ -35,4 +37,9 @@
     </div>
     
 </body>
+<script>
+  function authors() {
+      window.location.href = "{{ url_for('authors') }}";
+    }
+</script>
 </html>

@@ -26,6 +26,7 @@ p{
                    
             <div class="container-fluid">
                 <!-- back to dashboard -->
+                <button type="button" class="btn btn-outline-success" onclick="authors()">Authors</button>
               <a class="navbar-brand" href="{{ url_for('index') }}">
                 <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
                 Conversa
@@ -62,6 +63,10 @@ p{
 </div>
 </div>
     <script>
+
+function authors() {
+      window.location.href = "{{ url_for('authors') }}";
+    }
         // Automatically scroll to the bottom of the chat messages
         var chatMessages = document.getElementById('chat-messages');
         chatMessages.scrollTop = chatMessages.scrollHeight;

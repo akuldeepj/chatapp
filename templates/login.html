@@ -13,7 +13,7 @@
 }
 .navbar-brand{
     position: relative;
-    left: 42vw;
+    right: 42vw;
     color: #fff;
     font-size: 2rem;
 }
@@ -25,6 +25,7 @@
 
     <nav class="navbar bg-body-tertiary col">
         <div class="container-fluid">
+            <button type="button" class="btn btn-outline-success" onclick="authors()">Authors</button>
           <a class="navbar-brand" href="{{ url_for('index') }}">
             <img src="../static/logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
             Conversa
@@ -77,4 +78,9 @@
 
 
 </body>
+<script>
+    function authors() {
+      window.location.href = "{{ url_for('authors') }}";
+    }
+</script>
 </html>
