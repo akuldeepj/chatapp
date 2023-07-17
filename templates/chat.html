@@ -71,11 +71,9 @@ function authors() {
     function back(){
         window.location.href = "{{ url_for('dashboard') }}";
     }
-        // Automatically scroll to the bottom of the chat messages
         var chatMessages = document.getElementById('chat-messages');
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        // Function to update the chat messages with new messages
         function updateChatMessages(messages) {
             var chatDiv = document.getElementById('chat-messages');
 
@@ -85,17 +83,14 @@ function authors() {
                 chatDiv.appendChild(messageDiv);
             });
 
-            // Scroll to the bottom of the chat messages
             chatDiv.scrollTop = chatDiv.scrollHeight;
         }
 
-        // Function to send a new message
         function sendMessage(event) {
             event.preventDefault();
             var messageInput = document.getElementById('message-input');
             var message = messageInput.value;
 
-            // Make an AJAX request to send the message to the server
             var xhr = new XMLHttpRequest();
             xhr.open('POST', "{{ url_for('chat', chat_id=chat_id) }}");
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -123,7 +118,6 @@ function checkNewMessages() {
         if (xhr.status === 200) {
             var newMessages = JSON.parse(xhr.responseText);
 
-            // Filter out the messages with a timestamp greater than the last received message's timestamp
             var filteredMessages = newMessages.filter(function(message) {
                 return message.timestamp > lastMessageTimestamp;
             });
@@ -140,7 +134,6 @@ function checkNewMessages() {
 }
 
 
-        // Check for new messages every 2 seconds (adjust as needed)
         setInterval(checkNewMessages, 1000);
         function redirectToPage() {
             // Redirect to the desired page
